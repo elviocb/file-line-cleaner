@@ -1,0 +1,19 @@
+{
+  "name": "file-line-cleaner",
+  "version": "1.0.0",
+  "description": "app to read and parse the line of a file",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elviocb/file-line-cleaner.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/elviocb/file-line-cleaner/issues"
+  },
+  "homepage": "https://github.com/elviocb/file-line-cleaner#readme",
+}
