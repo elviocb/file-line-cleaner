@@ -5,7 +5,7 @@ var fs = require('fs');
 process.stdin.resume();
 process.stdin.setEncoding('utf8');
 
-var allLines = []
+var allLines = [];
 
 process.stdin.on('data', function(chunk) {
     var lines = chunk.split("\n");
@@ -14,25 +14,32 @@ process.stdin.on('data', function(chunk) {
 });
 
 process.stdin.on('end', function() {
-    console.log(__dirname + '/dps.txt');
-  //   console.log(fs.readFileSync(__dirname + "/dps", function(err, file){
-  //     if(err) { console.log('error', err) }
-  //     console.log(file);
-  // }));
-    fs.readFile(__dirname + '/dps.txt', function (err, data) {
-      if (err) throw err;
-      data = data + '';
-      var ids = data.split('\n');
-      ids.pop();
-      console.log(ids);
-    });
-    
-    console.log(process.argv);
 
-    // allLines = allLines.filter(function(line) 
-    //   return ;
-    // });
+    var dps = fs.readFileSync(__dirname + '/dps.txt');
+    var dps = dps + '';
+    var ids = dps.split('\n');
+    ids.pop(); 
+
+    console.log(allLines.length);  
+    
+    allLines = allLines.filter(function(line){
+      var keep = true;
+      ids.forEach(function(id){
+        if (line.search(id) != -1) {
+          keep = false;
+        }
+      });
+      return keep;
+    });
+
+    var newFile = fs.createWriteStream('newFile.txt');
+    allLines.forEach(function(line){
+      newFile.write(line + '\n'); 
+    });
+
     console.log(allLines.length);
     console.log('ennnnnddddd');
+
 });
+
 
